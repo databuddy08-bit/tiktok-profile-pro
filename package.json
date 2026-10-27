@@ -1,0 +1,24 @@
+{
+    "name": "tiktok-profile-pro",
+    "version": "1.0.0",
+    "description": "TikTok profiles and the videos they post (and repost): profile data, stats, music, subtitles, covers and optional file downloads. No login.",
+    "type": "module",
+    "main": "src/main.js",
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "start": "node src/main.js",
+        "test": "node --test test/unit.test.js",
+        "validate-schema": "node test/validate-schemas.js"
+    },
+    "dependencies": {
+        "apify": "^3.7.2",
+        "playwright": "1.56.0"
+    },
+    "devDependencies": {
+        "@apify/input_schema": "^3.29.2",
+        "ajv": "^8.17.1"
+    },
+    "license": "UNLICENSED"
+}

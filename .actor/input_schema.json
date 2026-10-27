@@ -1,0 +1,175 @@
+{
+    "title": "TikTok Profile Scraper Pro",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "profiles": {
+            "title": "Profiles",
+            "type": "array",
+            "editor": "stringList",
+            "description": "TikTok usernames (with or without @) or profile URLs, e.g. apifytech or https://www.tiktok.com/@nasa. One per line.",
+            "prefill": [
+                "apifytech"
+            ]
+        },
+        "profileScrapeSections": {
+            "title": "Profile sections",
+            "type": "array",
+            "editor": "select",
+            "description": "Which lists to scrape from each profile: the videos the creator posted, and/or the videos they reposted.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "videos",
+                    "reposts"
+                ],
+                "enumTitles": [
+                    "Videos",
+                    "Reposts"
+                ]
+            },
+            "default": [
+                "videos"
+            ]
+        },
+        "profileSorting": {
+            "title": "Sort videos",
+            "type": "string",
+            "editor": "select",
+            "description": "Order of the profile's videos, like the Latest / Popular / Oldest tabs on TikTok.",
+            "enum": [
+                "latest",
+                "popular",
+                "oldest"
+            ],
+            "enumTitles": [
+                "Latest",
+                "Popular",
+                "Oldest"
+            ],
+            "default": "latest"
+        },
+        "resultsPerPage": {
+            "title": "Videos per profile",
+            "type": "integer",
+            "description": "Maximum number of videos to save from each profile (per section).",
+            "minimum": 1,
+            "default": 100
+        },
+        "excludePinnedPosts": {
+            "title": "Exclude pinned videos",
+            "type": "boolean",
+            "description": "Skip the videos pinned to the top of the profile.",
+            "default": false
+        },
+        "oldestPostDateUnified": {
+            "title": "Videos published after",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Only videos published on or after this date: 2025-01-31 or a relative time like \"30 days\". With \"Latest\" sorting the scraper stops paging once it passes this date. Leave empty for no limit.",
+            "default": ""
+        },
+        "newestPostDate": {
+            "title": "Videos published before",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Only videos published on or before this date (2025-12-31 includes the whole day) or a relative time like \"7 days\". Leave empty for no limit.",
+            "default": ""
+        },
+        "leastDiggs": {
+            "title": "Minimum likes",
+            "type": "integer",
+            "description": "Only videos with at least this many likes (hearts). 0 = no minimum. Skipped videos are free.",
+            "minimum": 0,
+            "default": 0
+        },
+        "mostDiggs": {
+            "title": "Maximum likes",
+            "type": "integer",
+            "description": "Only videos with at most this many likes. 0 = no maximum.",
+            "minimum": 0,
+            "default": 0
+        },
+        "maxItems": {
+            "title": "Maximum videos per run",
+            "type": "integer",
+            "description": "Stop after this many videos in total across all profiles. 0 = no limit (the run still stops at your Maximum cost per run).",
+            "minimum": 0,
+            "default": 0
+        },
+        "shouldDownloadVideos": {
+            "title": "Download videos",
+            "type": "boolean",
+            "description": "Paid add-on: store each video's MP4 in the key-value store. videoMeta.downloadAddr and mediaUrls then point to the stored copy; the TikTok link stays in videoMeta.originalDownloadAddr.",
+            "default": false
+        },
+        "shouldDownloadCovers": {
+            "title": "Download covers",
+            "type": "boolean",
+            "description": "Paid add-on: store each video's cover image. videoMeta.coverUrl points to the copy; videoMeta.originalCoverUrl keeps the TikTok link.",
+            "default": false
+        },
+        "shouldDownloadSubtitles": {
+            "title": "Download subtitles",
+            "type": "boolean",
+            "description": "Paid add-on: store every subtitle track (WebVTT). subtitleLinks[].downloadLink points to the copy; tiktokLink keeps the TikTok link.",
+            "default": false
+        },
+        "shouldDownloadSlideshowImages": {
+            "title": "Download slideshow images",
+            "type": "boolean",
+            "description": "Paid add-on: store every image of photo slideshows (slideshowImageLinks[].downloadLink).",
+            "default": false
+        },
+        "shouldDownloadAvatars": {
+            "title": "Download avatars",
+            "type": "boolean",
+            "description": "Paid add-on: store each creator's avatar once per run (authorMeta.avatar; authorMeta.originalAvatarUrl keeps the TikTok link).",
+            "default": false
+        },
+        "shouldDownloadMusicCovers": {
+            "title": "Download music covers",
+            "type": "boolean",
+            "description": "Paid add-on: store each sound's cover image (musicMeta.coverMediumUrl; originalCoverMediumUrl keeps the TikTok link).",
+            "default": false
+        },
+        "videoKvStoreIdOrName": {
+            "title": "Key-value store for downloads",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Name or ID of the key-value store for downloaded files. Leave empty to use the run's default store (named stores are kept after the run).",
+            "default": ""
+        },
+        "fallbackWhenListBlocked": {
+            "title": "Public fallback when the video list is refused",
+            "type": "boolean",
+            "description": "TikTok sometimes refuses a profile's full video list to logged-out visitors. When that happens on every route, collect what the profile still shows publicly: its latest posts and its playlists (marked with dataSource).",
+            "default": true
+        },
+        "proxyCountryCode": {
+            "title": "Proxy country",
+            "type": "string",
+            "editor": "textfield",
+            "description": "Optional 2-letter country code (e.g. US, GB, DE) for the RESIDENTIAL proxy used for video lists. Leave empty for any country.",
+            "default": ""
+        },
+        "proxyConfiguration": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "editor": "proxy",
+            "description": "Leave as is: profile pages work without a proxy, and video lists switch to Apify RESIDENTIAL automatically when TikTok refuses them. Videos listed through RESIDENTIAL add the \"Residential video\" extra.",
+            "default": {
+                "useApifyProxy": false
+            }
+        },
+        "proxyFallback": {
+            "title": "Automatic proxy fallback",
+            "type": "boolean",
+            "description": "Switch routes automatically (Apify RESIDENTIAL and datacenter) when TikTok refuses the current one.",
+            "default": true
+        }
+    },
+    "required": [
+        "profiles"
+    ]
+}

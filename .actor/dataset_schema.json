@@ -1,0 +1,213 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "transformation": {
+                "fields": [
+                    "input",
+                    "authorMeta.name",
+                    "fromProfileSection",
+                    "webVideoUrl",
+                    "text",
+                    "createTimeISO",
+                    "playCount",
+                    "diggCount",
+                    "commentCount",
+                    "shareCount",
+                    "collectCount",
+                    "isPinned",
+                    "isSlideshow",
+                    "musicMeta.musicName",
+                    "videoMeta.duration",
+                    "videoMeta.coverUrl",
+                    "hashtags",
+                    "videoMeta.downloadAddr"
+                ],
+                "flatten": [
+                    "authorMeta",
+                    "musicMeta",
+                    "videoMeta"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "input": {
+                        "label": "Input"
+                    },
+                    "authorMeta.name": {
+                        "label": "Profile"
+                    },
+                    "fromProfileSection": {
+                        "label": "Section"
+                    },
+                    "webVideoUrl": {
+                        "label": "Video",
+                        "format": "link"
+                    },
+                    "text": {
+                        "label": "Caption"
+                    },
+                    "createTimeISO": {
+                        "label": "Posted",
+                        "format": "date"
+                    },
+                    "playCount": {
+                        "label": "Plays",
+                        "format": "number"
+                    },
+                    "diggCount": {
+                        "label": "Likes",
+                        "format": "number"
+                    },
+                    "commentCount": {
+                        "label": "Comments",
+                        "format": "number"
+                    },
+                    "shareCount": {
+                        "label": "Shares",
+                        "format": "number"
+                    },
+                    "collectCount": {
+                        "label": "Saves",
+                        "format": "number"
+                    },
+                    "isPinned": {
+                        "label": "Pinned",
+                        "format": "boolean"
+                    },
+                    "isSlideshow": {
+                        "label": "Slideshow",
+                        "format": "boolean"
+                    },
+                    "musicMeta.musicName": {
+                        "label": "Sound"
+                    },
+                    "videoMeta.duration": {
+                        "label": "Duration (s)",
+                        "format": "number"
+                    },
+                    "videoMeta.coverUrl": {
+                        "label": "Cover",
+                        "format": "image"
+                    },
+                    "hashtags": {
+                        "label": "Hashtags",
+                        "format": "array"
+                    },
+                    "videoMeta.downloadAddr": {
+                        "label": "Video file",
+                        "format": "link"
+                    }
+                }
+            }
+        },
+        "profiles": {
+            "title": "Profiles",
+            "transformation": {
+                "fields": [
+                    "input",
+                    "authorMeta.name",
+                    "authorMeta.nickName",
+                    "authorMeta.verified",
+                    "authorMeta.fans",
+                    "authorMeta.following",
+                    "authorMeta.heart",
+                    "authorMeta.video",
+                    "authorMeta.signature",
+                    "authorMeta.bioLink",
+                    "authorMeta.ttSeller",
+                    "authorMeta.commerceUserInfo.commerceUser",
+                    "authorMeta.createTimeISO"
+                ],
+                "flatten": [
+                    "authorMeta"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "input": {
+                        "label": "Input"
+                    },
+                    "authorMeta.name": {
+                        "label": "Profile"
+                    },
+                    "authorMeta.nickName": {
+                        "label": "Name"
+                    },
+                    "authorMeta.verified": {
+                        "label": "Verified",
+                        "format": "boolean"
+                    },
+                    "authorMeta.fans": {
+                        "label": "Followers",
+                        "format": "number"
+                    },
+                    "authorMeta.following": {
+                        "label": "Following",
+                        "format": "number"
+                    },
+                    "authorMeta.heart": {
+                        "label": "Total likes",
+                        "format": "number"
+                    },
+                    "authorMeta.video": {
+                        "label": "Videos",
+                        "format": "number"
+                    },
+                    "authorMeta.signature": {
+                        "label": "Bio"
+                    },
+                    "authorMeta.bioLink": {
+                        "label": "Bio link",
+                        "format": "link"
+                    },
+                    "authorMeta.ttSeller": {
+                        "label": "TikTok Shop seller",
+                        "format": "boolean"
+                    },
+                    "authorMeta.commerceUserInfo.commerceUser": {
+                        "label": "Business account",
+                        "format": "boolean"
+                    },
+                    "authorMeta.createTimeISO": {
+                        "label": "Account created",
+                        "format": "date"
+                    }
+                }
+            }
+        },
+        "errors": {
+            "title": "Error items (free)",
+            "transformation": {
+                "fields": [
+                    "input",
+                    "url",
+                    "errorCode",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "input": {
+                        "label": "Input"
+                    },
+                    "url": {
+                        "label": "Profile URL",
+                        "format": "link"
+                    },
+                    "errorCode": {
+                        "label": "Error code"
+                    },
+                    "error": {
+                        "label": "Error"
+                    }
+                }
+            }
+        }
+    }
+}

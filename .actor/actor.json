@@ -1,0 +1,16 @@
+{
+    "actorSpecification": 1,
+    "name": "tiktok-profile-pro",
+    "title": "TikTok Profile Scraper Pro: Profiles, Videos & Reposts",
+    "description": "Extract data from TikTok profiles and the videos they post or repost: profile data, followers, likes, shares, comments, plays, video and music metadata, subtitles, and optional video/cover downloads. No login.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "minMemoryMbytes": 2048,
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "dockerfile": "../Dockerfile",
+    "readme": "../README.md"
+}

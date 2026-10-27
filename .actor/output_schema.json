@@ -1,0 +1,31 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "TikTok Profile Scraper Pro output",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Videos (Overview)",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        },
+        "profiles": {
+            "type": "string",
+            "title": "Profiles",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=profiles"
+        },
+        "errors": {
+            "type": "string",
+            "title": "Error items (free)",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=errors"
+        },
+        "files": {
+            "type": "string",
+            "title": "Downloaded files",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/keys"
+        },
+        "runSummary": {
+            "type": "string",
+            "title": "Run summary",
+            "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/RUN_SUMMARY"
+        }
+    }
+}
